@@ -60,7 +60,8 @@ echo v4l2loopback | tee /etc/modules-load.d/v4l2loopback.conf
 
 echo "root:PASSWORD_PLACEHOLDER" | chpasswd 2>/dev/null
 groupadd sambashare
-useradd -m -G wheel,docker,sambashare,nix-users USERNAME_PLACEHOLDER 2>/dev/null
+# groupadd nix-users
+useradd -m -G wheel,docker,sambashare USERNAME_PLACEHOLDER 2>/dev/null
 
 echo "USERNAME_PLACEHOLDER:PASSWORD_PLACEHOLDER" | chpasswd 2>/dev/null
 sed -i 's/^# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/' /etc/sudoers 2>/dev/null
@@ -71,7 +72,6 @@ pacman-key --add /opt/gopi_2-4.pub
 pacman-key --lsign-key 75879D6869B17E0213C76B28FF98E932365D1936
 rm /etc/pacman.conf
 cp /opt/pacman-gopi.conf /etc/pacman.conf
-#chmod +x /opt/rbt/rbt
 
 
 chmod +x /opt/generate-gpg-key.sh 2>/dev/null
@@ -79,6 +79,24 @@ chmod +x /opt/dag.sh 2>/dev/null
 chmod +x /opt/set-dark-mode.sh 2>/dev/null
 chmod +x /opt/setup-flathub-remote.sh 2>/dev/null
 chmod +x /home/USERNAME_PLACEHOLDER/Desktop/Apps/Google-Chrome.AppImage
+
+mkdir -p /etc/nix
+cp /opt/nix.conf /etc/nix/nix.conf
+# Create and set permissions for Nix store
+if [ ! -d "/nix" ]; then
+    mkdir -p /nix
+fi
+chown -R USERNAME_PLACEHOLDER:USERNAME_PLACEHOLDER /nix
+chmod 755 /nix
+# Ensure nix store exists and has correct permissions
+if [ ! -d "/nix/store" ]; then
+    mkdir -p /nix/store
+    # chmod 0777 /nix/store
+fi
+chown -R USERNAME_PLACEHOLDER:USERNAME_PLACEHOLDER /nix/store
+#chmod +x /opt/rbt/rbt
+
+
 
 
 # Hide faltu desktop menu entry
