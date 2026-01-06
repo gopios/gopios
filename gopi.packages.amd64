@@ -9,26 +9,30 @@ linux-cachyos-lts-headers
 vulkan-icd-loader
 lib32-vulkan-icd-loader
 
+nix
+
+lm_sensors
+#sensors-detect
+
 #drives
 rocm-core
 rocm-device-libs
 rocm-smi-lib
-nvidia
-nvidia-dkms
-nvidia-settings
-nvidia-utils
+#nvidia
+#nvidia-dkms
+#nvidia-settings
+#nvidia-utils
 
 amd-ucode
 amdsmi
 
-vulkan-intel
 # leverage the GPU for general-purpose parallel computing 
 intel-ucode
 intel-gmmlib
 intel-compute-runtime
 intel-gpu-tools
 intel-media-driver
-intel-npu-driver-bin
+#intel-npu-driver-bin
 libva
 libva-intel-driver
 vulkan-intel
@@ -47,9 +51,9 @@ sudo
 # Network
 networkmanager
 ##network-manager-applet
-plasma-nm
+
 modemmanager
-mobile-broadband-provider-info
+#mobile-broadband-provider-info
 usbutils
 
 
@@ -75,12 +79,18 @@ xorg-xwayland
 dolphin
 systemsettings
 kscreen
+power-profiles-daemon
 powerdevil
+upower
 bluedevil
 plasma-nm
 plasma-pa
+plasma-systemmonitor
+
+#ocs-url
 kwalletmanager
 kwallet
+kwallet-pam
 kgpg
 gnome-keyring
 libsecret
@@ -90,7 +100,8 @@ kwrite
 spectacle
 gwenview
 kdeconnect
-firefox-esr
+#firefox-esr
+chromium
 vlc
 vlc-plugins-all
 
@@ -143,6 +154,7 @@ fastfetch
 dnsutils
 unzip
 7zip
+tar
 hwinfo
 ugrep
 eza
@@ -184,7 +196,10 @@ bluedevil
 ttf-dejavu
 ttf-liberation
 noto-fonts
-nerd-fonts-inter
+noto-fonts-cjk
+noto-fonts-emoji
+noto-fonts-extra
+#nerd-fonts-inter
 ttf-nerd-fonts-symbols
 
 
@@ -202,6 +217,7 @@ nvm
 go
 rust
 rustup
+python3
 uv
 ghostwriter
 zed

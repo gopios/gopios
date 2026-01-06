@@ -3,7 +3,7 @@
 # DAG List Menu Script
 # This script displays a dialog menu with options to Get Script, Get App, and Update menu
 
-MENU_URL="https://apprepogopios.siliconpin.com/gopios/v1/DAG/menu.txt"
+MENU_URL="https://apprepogopios.siliconpin.com/gopi/pkg/gopi-2-4/DAG/menu.txt"
 TEMP_MENU="/tmp/dag_menu.txt"
 DIALOG_HEIGHT=20
 DIALOG_WIDTH=60
@@ -59,8 +59,8 @@ update_menu() {
 
 # Function to handle Get Script option
 get_script() {
-    local SCRIPTS_LIST_URL="https://apprepogopios.siliconpin.com/gopios/v1/DAG/scripts.txt"
-    local SCRIPTS_BASE_URL="https://apprepogopios.siliconpin.com/gopios/v1/DAG/apps/scripts/"
+    local SCRIPTS_LIST_URL="https://apprepogopios.siliconpin.com/gopi/pkg/gopi-2-4/DAG/scripts.txt"
+    local SCRIPTS_BASE_URL="https://apprepogopios.siliconpin.com/gopi/pkg/gopi-2-4/DAG/apps/scripts/"
     local DOWNLOAD_DIR="$HOME/Desktop/Apps/scripts"
     local TEMP_SCRIPTS_LIST="/tmp/dag_scripts.txt"
     
@@ -139,8 +139,8 @@ get_script() {
 
 # Function to handle Get App option
 get_app() {
-    local APPS_LIST_URL="https://apprepogopios.siliconpin.com/gopios/v1/DAG/apps.txt"
-    local APPS_BASE_URL="https://apprepogopios.siliconpin.com/gopios/v1/DAG/apps/"
+    local APPS_LIST_URL="https://apprepogopios.siliconpin.com/gopi/pkg/gopi-2-4/DAG/apps.txt"
+    local APPS_BASE_URL="https://apprepogopios.siliconpin.com/gopi/pkg/gopi-2-4/DAG/apps/"
     local DOWNLOAD_DIR="$HOME/Desktop/Apps"
     local TEMP_APPS_LIST="/tmp/dag_apps.txt"
     

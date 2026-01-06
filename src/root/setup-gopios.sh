@@ -53,20 +53,24 @@ systemctl enable docker 2>/dev/null
 systemctl enable systemd-timesyncd 2>/dev/null
 systemctl set-default graphical.target 2>/dev/null
 systemctl enable bluetooth.service
+systemctl enable nix-daemon.service
 systemctl enable smb nmb
 systemctl --user enable gpg-agent.socket
 echo v4l2loopback | tee /etc/modules-load.d/v4l2loopback.conf
 
 echo "root:PASSWORD_PLACEHOLDER" | chpasswd 2>/dev/null
 groupadd sambashare
-useradd -m -G wheel,docker,sambashare USERNAME_PLACEHOLDER 2>/dev/null
+useradd -m -G wheel,docker,sambashare,nix-users USERNAME_PLACEHOLDER 2>/dev/null
 
 echo "USERNAME_PLACEHOLDER:PASSWORD_PLACEHOLDER" | chpasswd 2>/dev/null
 sed -i 's/^# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/' /etc/sudoers 2>/dev/null
 # plasma-apply-lookandfeel --apply org.kde.breezedark
 pacman-key --init 
 pacman-key --populate archlinux 
-
+pacman-key --add /opt/gopi_2-4.pub
+pacman-key --lsign-key 75879D6869B17E0213C76B28FF98E932365D1936
+rm /etc/pacman.conf
+cp /opt/pacman-gopi.conf /etc/pacman.conf
 #chmod +x /opt/rbt/rbt
 
 
